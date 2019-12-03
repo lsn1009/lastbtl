@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-ketqua-heading">Create or edit a Ketqua</h2>
+            <h2 id="jhi-ketqua-heading">Create or edit a result</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!editForm.get('id').value">
@@ -10,7 +10,7 @@
                         readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_diemso">Diemso</label>
+                    <label class="form-control-label" for="field_diemso">Điểm số</label>
                     <input type="number" class="form-control" name="diemso" id="field_diemso"
                            formControlName="diemso"/>
                 </div>

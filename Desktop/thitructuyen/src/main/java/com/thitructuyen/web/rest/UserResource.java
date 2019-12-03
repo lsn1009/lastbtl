@@ -189,7 +189,7 @@ public class UserResource {
         userService.deleteUser(login);
         return ResponseEntity.noContent().headers(HeaderUtil.createAlert(applicationName,  "A user is deleted with identifier " + login, login)).build();
     }
-    @GetMapping("/ketqua/getUser")
+    @GetMapping("/users/getUser")
     public Optional<User> getUser(){
         return userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get());
     }

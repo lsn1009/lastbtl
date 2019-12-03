@@ -32,7 +32,7 @@ export class KetquaUpdateComponent implements OnInit {
     protected ketquaService: KetquaService,
     protected userService: UserService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    public fb: FormBuilder
   ) {}
 
   ngOnInit() {
@@ -71,7 +71,7 @@ export class KetquaUpdateComponent implements OnInit {
     }
   }
 
-  private createFromForm(): IKetqua {
+  public createFromForm(): IKetqua {
     return {
       ...new Ketqua(),
       id: this.editForm.get(['id']).value,

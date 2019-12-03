@@ -1,24 +1,24 @@
 <div>
     <h2 id="page-heading">
-        <span>Ketquas</span>
+        <span>Kết quả</span>
         <button *jhiHasAnyAuthority="'ROLE_ADMIN'" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ketqua" [routerLink]="['/ketqua/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span >
-            Create a new Ketqua
+            Create a new Result
             </span>
         </button>
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
     <div class="alert alert-warning" *ngIf="ketquas?.length === 0">
-        <span>No ketquas found</span>
+        <span>No result found</span>
     </div>
     <div class="table-responsive" *ngIf="ketquas?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr>
             <th><span>ID</span></th>
-            <th><span>Diemso</span></th>
+            <th><span>Điểm số</span></th>
             <th><span>User</span></th>
             <th></th>
             </tr>

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { ICauhoi } from 'app/shared/model/cauhoi.model';
+import {IUser} from "app/core/user/user.model";
 
 type EntityResponseType = HttpResponse<ICauhoi>;
 type EntityArrayResponseType = HttpResponse<ICauhoi[]>;
@@ -13,6 +14,7 @@ type EntityArrayResponseType = HttpResponse<ICauhoi[]>;
 export class CauhoiService {
   public resourceUrl = SERVER_API_URL + 'api/cauhois';
   public urlRandom = SERVER_API_URL + 'api/cauhois/random';
+  public urlUser = SERVER_API_URL + 'api/users/getUser';
   constructor(protected http: HttpClient) {}
 
   create(cauhoi: ICauhoi): Observable<EntityResponseType> {
@@ -38,5 +40,9 @@ export class CauhoiService {
   queryRandom(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<ICauhoi[]>(this.urlRandom, { params: options, observe: 'response' });
+  }
+  queryUser(req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http.get<IUser[]>(this.urlUser, { params: options, observe: 'response' });
   }
 }

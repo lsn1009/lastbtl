@@ -4,11 +4,11 @@
     <div class="alert alert-warning" *ngIf="cauhois?.length === 0">
         <span>No question found</span>
     </div>
+
     <div class="table-responsive" *ngIf="cauhois?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr>
-                <th><span>ID</span></th>
                 <th><span>Nội Dung</span></th>
                 <th><span>A</span></th>
                 <th><span>B</span></th>
@@ -18,41 +18,40 @@
             </thead>
             <tbody>
             <tr *ngFor="let cauhoi of cauhois ;trackBy: trackId">
-                <td><a [routerLink]="['/cauhoi', cauhoi.id, 'view' ]">{{cauhoi.id}}</a></td>
                 <td>{{cauhoi.noidung}}</td>
                 <td>
-                    <div class="custom-control custom-checkbox mr-sm-2">
-                    <input type="radio" class="custom-control-input" name="{{cauhoi.id}}" id="{{cauhoi.id}}1" value="{{cauhoi.dapan1}}">
+                    <div class="custom-control custom-radio mr-sm-2">
+                    <input [(ngModel)]="cauhoi.cauTraLoi"  type="radio" class="custom-control-input" name="{{cauhoi.id}}" id="{{cauhoi.id}}1" value="{{cauhoi.dapan1}}">
                     <label class="custom-control-label" for="{{cauhoi.id}}1">{{cauhoi.dapan1}}</label>
                     </div>
                 </td>
                 <td>
-                    <div class="custom-control custom-checkbox mr-sm-2">
-                        <input type="radio" class="custom-control-input" name="{{cauhoi.id}}" id="{{cauhoi.id}}2" value="{{cauhoi.dapan2}}">
+                    <div class="custom-control custom-radio mr-sm-2">
+                        <input [(ngModel)]="cauhoi.cauTraLoi"  type="radio" class="custom-control-input" name="{{cauhoi.id}}" id="{{cauhoi.id}}2" value="{{cauhoi.dapan2}}">
                         <label class="custom-control-label" for="{{cauhoi.id}}2">{{cauhoi.dapan2}}</label>
                     </div>
                 </td>
                 <td>
-                    <div class="custom-control custom-checkbox mr-sm-2">
-                        <input type="radio" class="custom-control-input" name="{{cauhoi.id}}" id="{{cauhoi.id}}3" value="{{cauhoi.dapan3}}">
+                    <div class="custom-control custom-radio mr-sm-2">
+                        <input [(ngModel)]="cauhoi.cauTraLoi"  type="radio" class="custom-control-input" name="{{cauhoi.id}}" id="{{cauhoi.id}}3" value="{{cauhoi.dapan3}}">
                         <label class="custom-control-label" for="{{cauhoi.id}}3">{{cauhoi.dapan3}}</label>
                     </div>
                 </td>
                 <td>
-                    <div class="custom-control custom-checkbox mr-sm-2">
-                        <input type="radio" class="custom-control-input" name="{{cauhoi.id}}" id="{{cauhoi.id}}4" value="{{cauhoi.dapan4}}">
+                    <div class="custom-control custom-radio mr-sm-2">
+                        <input  [(ngModel)]="cauhoi.cauTraLoi" type="radio" class="custom-control-input" name="{{cauhoi.id}}" id="{{cauhoi.id}}4" value="{{cauhoi.dapan4}}">
                         <label class="custom-control-label" for="{{cauhoi.id}}4">{{cauhoi.dapan4}}</label>
                     </div>
                 </td>
             </tbody>
         </table>
     </div>
-    <button type="submit" id="submit-test" class="btn btn-primary">
+    <button type="submit" id="submit-test" class="btn btn-primary" (click)="checkTest()" [routerLink]="['']">
         <fa-icon></fa-icon><span>Submit</span>
     </button>
     <button type="button"
             [routerLink]="['']"
             class="btn btn-info">
-        <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+        <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span>  Back</span>
     </button>
 </div>

@@ -8,6 +8,12 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { ICauhoi } from 'app/shared/model/cauhoi.model';
 import { AccountService } from 'app/core/auth/account.service';
 import { CauhoiService } from './cauhoi.service';
+import {KetquaService} from "app/entities/ketqua/ketqua.service";
+import {IUser} from "app/core/user/user.model";
+import {UserService} from "app/core/user/user.service";
+import {ILoai} from "app/shared/model/loai.model";
+import {FormBuilder} from "@angular/forms";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'jhi-cauhoi',
@@ -15,14 +21,18 @@ import { CauhoiService } from './cauhoi.service';
 })
 export class CauhoiComponent implements OnInit, OnDestroy {
   cauhois: ICauhoi[];
+  user: IUser[];
   currentAccount: any;
   eventSubscriber: Subscription;
-
   constructor(
     protected cauhoiService: CauhoiService,
     protected jhiAlertService: JhiAlertService,
     protected eventManager: JhiEventManager,
-    protected accountService: AccountService
+    protected accountService: AccountService,
+    protected ketquaService: KetquaService,
+    protected userService: UserService,
+    protected activatedRoute: ActivatedRoute,
+    protected fb: FormBuilder
   ) {}
 
   loadAll() {
@@ -46,6 +56,13 @@ export class CauhoiComponent implements OnInit, OnDestroy {
       this.currentAccount = account;
     });
     this.registerChangeInCauhois();
+    this.userService
+      .queryUser()
+      .pipe(
+        filter((mayBeOk: HttpResponse<IUser[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IUser[]>) => response.body)
+      )
+      .subscribe((res: IUser[]) => (this.user = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   ngOnDestroy() {

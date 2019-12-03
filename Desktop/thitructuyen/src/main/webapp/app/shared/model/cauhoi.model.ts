@@ -2,6 +2,7 @@ import { IDokho } from 'app/shared/model/dokho.model';
 import { ILoai } from 'app/shared/model/loai.model';
 
 export interface ICauhoi {
+  cauTraLoi?: string;
   id?: number;
   noidung?: string;
   ketqua?: string;
@@ -23,6 +24,7 @@ export class Cauhoi implements ICauhoi {
     public dapan3?: string,
     public dapan4?: string,
     public dokho?: IDokho,
-    public loai?: ILoai
+    public loai?: ILoai,
+    public cauTraLoi?: string
   ) {}
 }
